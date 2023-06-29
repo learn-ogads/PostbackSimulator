@@ -7,7 +7,7 @@ public class OfferResponse
     [JsonPropertyName("success")]
     public bool Success { get; set; }
     [JsonPropertyName("error")]
-    public object Error { get; set; }
+    public object Error { get; set; } = default!;
     [JsonPropertyName("offers")]
-    public List<Offer> Offers { get; set; }
+    public List<Offer> Offers { get; set; } = default!;
 }

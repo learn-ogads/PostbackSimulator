@@ -1,8 +1,10 @@
-﻿using System.Security.Cryptography;
+﻿using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Web;
 using Bogus;
 using OfferSimulation.Models;
+using Spectre.Console;
 
 namespace OfferSimulation;
 
@@ -19,6 +21,27 @@ public class PostbackUrl
         _offer = offer;
         _ipAddress = ipAddress;
         _faker = new Faker();
+    }
+    
+    /// <summary>
+    /// GetUrl will get the URL from the user and return it
+    /// </summary>
+    public static string GetInput()
+    {
+        while (true)
+        {
+            Console.Write("Enter in your URL:");
+            var url = Console.ReadLine();
+
+            if (url != null && ValidateUrl(url)) return url;
+            AnsiConsole.MarkupLine("[red]Invalid URL provided! Please try again[/]");
+        }
+    }
+    
+    private static bool ValidateUrl(string url)
+    {
+        return url.StartsWith("https://www.") || url.StartsWith("http://www.") || url.StartsWith("http://") ||
+               url.StartsWith("https://");
     }
 
     /// <summary>

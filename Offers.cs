@@ -1,8 +1,8 @@
 ﻿using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Web;
-using OfferSimulation.Core;
 using OfferSimulation.Models;
+using Spectre.Console;
 
 namespace OfferSimulation;
 
@@ -37,9 +37,10 @@ public class Offers
         }
         catch (Exception)
         {
-            CustomConsole.WriteLine("[ERROR] Failed to fetch offers from OGAds. Either you provided an invalid API key or the request timed out", ConsoleColor.Red);
+            AnsiConsole.MarkupLine("[red]Failed to fetch offers from OGAds. Either you provided an invalid API key or the request timed out[/]");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
+            Environment.Exit(1);
             throw;
         }
     }

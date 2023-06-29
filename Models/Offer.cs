@@ -7,25 +7,25 @@ public class Offer
     [JsonPropertyName("offerid")]
     public int OfferId { get; set; }
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string Name { get; set; } = default!;
     [JsonPropertyName("name_short")]
-    public string NameShort { get; set; }
+    public string NameShort { get; set; } = default!;
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string Description { get; set; } = default!;
     [JsonPropertyName("adcopy")]
-    public string AdCopy { get; set; }
+    public string AdCopy { get; set; } = default!;
     [JsonPropertyName("picture")]
-    public string Picture { get; set; }
+    public string Picture { get; set; } = default!;
     [JsonPropertyName("payout")]
-    public string Payout { get; set; }
+    public string Payout { get; set; } = default!;
     [JsonPropertyName("country")]
-    public string Country { get; set; }
+    public string Country { get; set; } = default!;
     [JsonPropertyName("device")]
-    public string Device { get; set; }
+    public string Device { get; set; } = default!;
     [JsonPropertyName("link")]
-    public string Link { get; set; }
+    public string Link { get; set; } = default!;
     [JsonPropertyName("epc")]
-    public string Epc { get; set; }
+    public string Epc { get; set; } = default!;
 
     public override string ToString()
     {

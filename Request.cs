@@ -1,4 +1,4 @@
-﻿using OfferSimulation.Core;
+﻿using Spectre.Console;
 
 namespace OfferSimulation;
 
@@ -10,8 +10,15 @@ public class Request
     public static async Task SendAsync(string url)
     {
         using var client = new HttpClient();
-        CustomConsole.WriteLine($"[INFO] Sending request: {url}", ConsoleColor.Blue);
-        await client.GetAsync(url);
-        CustomConsole.WriteLine("[INFO] Finished sending the request", ConsoleColor.Blue);
+        AnsiConsole.MarkupLine($"[blue]Sending request: {url}[/]");
+        try
+        {
+            await client.GetAsync(url);
+            AnsiConsole.MarkupLine("[blue]Finished sending the request[/]");
+        }
+        catch (Exception)
+        {
+            AnsiConsole.MarkupLine("[red]Failed to send the request to the provided URL. Please check that your server or URL is active and valid![/]");
+        }
     }
 }
